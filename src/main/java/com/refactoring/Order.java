@@ -4,9 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    public Client client;
-    public List<Product> products = new ArrayList<>();
-    public double discountRate = 0.1;
+    private static final double DISCOUNT_RATE = 0.1;
+
+    private final Client client;
+    private final List<Product> products = new ArrayList<>();
+
+    public Order(Client client) {
+        this.client = client;
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
 
     public void printInvoice() {
         double total = 0;
@@ -16,8 +25,8 @@ public class Order {
             total += product.getPrice() * product.getQuantity();
         }
         System.out.println("Subtotal: R$" + total);
-        System.out.println("Desconto: R$" + (total * discountRate));
-        System.out.println("Total final: R$" + (total * (1 - discountRate)));
+        System.out.println("Desconto: R$" + (total * DISCOUNT_RATE));
+        System.out.println("Total final: R$" + (total * (1 - DISCOUNT_RATE)));
     }
 
     public void sendEmail() {
