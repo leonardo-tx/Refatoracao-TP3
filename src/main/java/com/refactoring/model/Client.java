@@ -1,9 +1,9 @@
-package com.refactoring;
+package com.refactoring.model;
 
 import lombok.Getter;
 
 @Getter
-public class Client {
+public final class Client {
     private final String email;
     private final String name;
 

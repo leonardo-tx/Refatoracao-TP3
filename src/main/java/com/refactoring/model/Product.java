@@ -1,9 +1,9 @@
-package com.refactoring;
+package com.refactoring.model;
 
 import lombok.Getter;
 
 @Getter
-public class Product {
+public final class Product {
     private final String name;
     private final int quantity;
     private final double price;
@@ -12,5 +12,14 @@ public class Product {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
+    }
+
+    public double calculateTotal() {
+        return price * quantity;
+    }
+
+    @Override
+    public String toString() {
+        return quantity + "x " + name + " - R$" + price;
     }
 }
