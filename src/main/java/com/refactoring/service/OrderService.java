@@ -11,6 +11,12 @@ public final class OrderService {
     private final DiscountApplier discountApplier;
 
     public OrderService(EmailService emailService, DiscountApplier discountApplier) {
+        if (emailService == null) {
+            throw new IllegalArgumentException("The email service must not be null.");
+        }
+        if (discountApplier == null) {
+            throw new IllegalArgumentException("The discount applier must not be null.");
+        }
         this.emailService = emailService;
         this.discountApplier = discountApplier;
     }
@@ -20,6 +26,9 @@ public final class OrderService {
     }
 
     public void completeTransaction(Order order) {
+        if (order == null) {
+            throw new IllegalArgumentException("The order must not be null.");
+        }
         printInvoice(order);
         sendEmail(order);
     }
